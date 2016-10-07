@@ -13,5 +13,4 @@ class Payload < ActiveRecord::Base
   validates :resolution_height, presence: true
   validates :ip, presence: true
 
-
 end
