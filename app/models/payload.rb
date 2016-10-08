@@ -20,4 +20,8 @@ class Payload < ActiveRecord::Base
     Payload.average("responded_in")
   end
 
+  def self.max_response
+    Payload.maximum("responded_in")
+  end
+
 end
