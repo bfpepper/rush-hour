@@ -24,4 +24,9 @@ class Payload < ActiveRecord::Base
     Payload.maximum("responded_in")
   end
 
+  def self.min_response
+    Payload.minimum("responded_in")
+  end
+
+
 end
