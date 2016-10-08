@@ -2,12 +2,12 @@
 
 development:
   adapter: postgresql
-  database: rush-hour-development
+  database: rush-hour-2-development
 
 test:
   adapter: postgresql
-  database: rush-hour-test
+  database: rush-hour-2-test
 
 production:
   adapter: postgresql
-  database: rush-hour-production
+  database: rush-hour-2-production
