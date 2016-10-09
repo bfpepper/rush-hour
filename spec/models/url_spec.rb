@@ -214,4 +214,247 @@ RSpec.describe "Url" do
       expect(Url.verb_list(u1.url)).to eq(["GET", "PUT"])
     end
   end
+  describe ".top_referrers" do
+    it "returns a list of top 3 referrers" do
+      u1 = Url.create(url: "www.google.com")
+      r1 = Referrer.create(url: "www.google.com")
+      r2 = Referrer.create(url: "www.facebook.com")
+      r3 = Referrer.create(url: "www.today.turing.io")
+      r4 = Referrer.create(url: "www.cnn.com")
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r1.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r1.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r1.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                url_id: u1.id,
+                                requested_at: "2013-02-16 21:38:28 -0700",
+                                responded_in: 40,
+                                referrer_id: r4.id,
+                                request_type_id: 3,
+                                event_name_id: 54,
+                                agent_id: 24,
+                                ip_id: 53243,
+                                screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r1.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r2.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r2.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r2.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r3.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: r3.id,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+
+      expect(Url.top_referrers(u1.url)).to eq([r1.url, r2.url, r3.url])
+    end
+  end
+
+  describe ".top_agents" do
+    it "returns a list of top 3 agents" do
+      u1 = Url.create(url: "www.google.com")
+      a1 = Agent.create(os: "mac", browser: "chrome")
+      a2 = Agent.create(os: "mac", browser: "safari")
+      a3 = Agent.create(os: "windows", browser: "chrome")
+      a4 = Agent.create(os: "windows", browser: "ie3")
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 54,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a4.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 64,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a1.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 74,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a1.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                url_id: u1.id,
+                                requested_at: "2013-02-16 21:38:28 -0700",
+                                responded_in: 40,
+                                referrer_id: 75,
+                                request_type_id: 3,
+                                event_name_id: 54,
+                                agent_id: a1.id,
+                                ip_id: 53243,
+                                screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 6,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a1.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 65,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a2.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 76,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a2.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 76,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a2.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 99,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a3.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 23,
+                                  request_type_id: 3,
+                                  event_name_id: 54,
+                                  agent_id: a3.id,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+
+      expect(Url.top_agents(u1.url)).to eq(["#{a1.os} #{a1.browser}", "#{a2.os} #{a2.browser}","#{a3.os} #{a3.browser}"])
+    end
+  end
 end
