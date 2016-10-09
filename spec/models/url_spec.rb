@@ -110,7 +110,108 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-        expect(Url.max_response("www.google.com")).to eq(40)
+        expect(Url.max_response(u1.url)).to eq(40)
+    end
+  end
+  describe ".ordered_response_times" do
+    it "returns an order list of response times from slowest to fastest." do
+      u1 = Url.create(url: "www.google.com")
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 37,
+                                  referrer_id: 43,
+                                  request_type_id: 1,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 50,
+                                  referrer_id: 43,
+                                  request_type_id: 2,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      expect(Url.ordered_response_times(u1.url)).to eq([50, 37])
+    end
+  end
+  describe ".averaged_response_time" do
+    it "returns the average response time." do
+      u1 = Url.create(url: "www.google.com")
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 40,
+                                  request_type_id: 1,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 50,
+                                  referrer_id: 43,
+                                  request_type_id: 2,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      expect(Url.average_response_time(u1.url)).to eq(45)
+    end
+  end
+  describe ".request_type" do
+    it "returns a list of all http verbs." do
+      u1 = Url.create(url: "www.google.com")
+      r1 = RequestType.create(request: "GET")
+      r2 = RequestType.create(request: "PUT")
+      RequestType.create(request: "POST")
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 40,
+                                  referrer_id: 40,
+                                  request_type_id: r1.id,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 50,
+                                  referrer_id: 43,
+                                  request_type_id: r2.id,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      Payload.find_or_create_by({
+                                  url_id: u1.id,
+                                  requested_at: "2013-02-16 21:38:28 -0700",
+                                  responded_in: 50,
+                                  referrer_id: 43,
+                                  request_type_id: r1.id,
+                                  event_name_id: 54,
+                                  agent_id: 24,
+                                  ip_id: 53243,
+                                  screen_resolution_id: 3
+                                })
+      expect(Url.verb_list(u1.url)).to eq(["GET", "PUT"])
     end
   end
 end
