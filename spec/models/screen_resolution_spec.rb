@@ -1,58 +1,46 @@
-require_relative '../spec_helper.rb'
+require_relative '../spec_helper'
 
-RSpec.describe "Url" do
-  it "is valid with a url" do
-
-    result = Url.create(url: "www.google.com")
-
-    expect(result).to be_valid
-  end
-  it "is invalid without a url" do
-
-    result = Url.create( )
-
-    expect(result).to_not be_valid
-  end
-  describe '.most_to_least_requested' do
-    it "returns list of URLs listed form most requested to least requested" do
-      u1 = Url.create(url: "www.google.com")
-      u2 = Url.create(url: "www.facebook.com")
+RSpec.describe "ScreenResolution" do
+  describe ".screen_breakdown" do
+    it "returns screen breakdown across all payloads" do
+      s1 = ScreenResolution.create(height: "500", width: "5000")
+      s2 = ScreenResolution.create(height: "80", width: "800")
       Payload.find_or_create_by({
-                                  url_id: u1.id,
+                                  url_id: 1,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
                                   referrer_id: 43,
-                                  request_type_id: 1,
+                                  request_type_id: 432,
                                   event_name_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: s1.id
                                 })
 
       Payload.find_or_create_by({
-                                  url_id: u1.id,
+                                  url_id: 1,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
                                   referrer_id: 43,
-                                  request_type_id: 2,
+                                  request_type_id: 89,
                                   event_name_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: s1.id
                                 })
       Payload.find_or_create_by({
-                                  url_id: u2.id,
+                                  url_id: 1,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
                                   referrer_id: 43,
-                                  request_type_id: 2,
+                                  request_type_id: 3,
                                   event_name_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: s2.id
                                 })
 
-        expect(Url.most_to_least_requested).to eq([u1.url, u2.url])
+        expect(ScreenResolution.screen_breakdown).to eq(["#{s1.width} x #{s1.height}", "#{s2.width} x #{s2.height}"])
     end
   end
 end

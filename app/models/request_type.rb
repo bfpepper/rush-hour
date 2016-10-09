@@ -1,10 +1,12 @@
 class RequestType < ActiveRecord::Base
   has_many :payloads
   validates :request, presence: true
-
   def self.most_frequent
-    request = Payload.all.group(:request_type_id)
-    
-    request.group(:request).count.maximum
+    key = Payload.all.group(:request_type_id).order('count(*) DESC').count.first.first
+    RequestType.find(key).request
+  end
+
+  def self.all_verbs
+    RequestType.all.map {|type| type.request}
   end
 end
