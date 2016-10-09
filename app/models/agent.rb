@@ -14,6 +14,7 @@ class Agent < ActiveRecord::Base
 
   def self.os_breakdown
     os = Payload.all.group(:agent_id).order('count(*) DESC').count.keys
+    
     os.map do |os_id|
       Agent.find(os_id).os
     end
