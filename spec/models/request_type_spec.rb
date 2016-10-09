@@ -1,5 +1,4 @@
 require_relative '../spec_helper'
-require 'pry'
 
 RSpec.describe "RequestType" do
   describe ".most_frequent" do
