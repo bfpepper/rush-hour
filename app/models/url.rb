@@ -7,5 +7,12 @@ class Url < ActiveRecord::Base
     url_key.map {|key| Url.find(key).url}
   end
 
+  def self.min_response(url)
+    Url.find_by(url: url).payloads.minimum("responded_in")
+  end
+
+  def self.max_response(url)
+    Url.find_by(url: url).payloads.maximum("responded_in")
+  end
 
 end
