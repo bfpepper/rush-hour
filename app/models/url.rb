@@ -1,6 +1,9 @@
 class Url < ActiveRecord::Base
   has_many :payloads
   has_many :request_types, through: :payloads
+  has_many :referrers, through: :payloads
+  has_many :agents, through: :payloads
+
   validates :url, presence: true
 
   def self.most_to_least_requested
@@ -25,7 +28,15 @@ class Url < ActiveRecord::Base
   end
 
   def self.verb_list(url)
-      Url.find_by(url: url).request_types.map{|request_type| request_type.request}.uniq
+    Url.find_by(url: url).request_types.map{|request_type| request_type.request}.uniq
+  end
+
+  def self.top_referrers(url)
+    Url.find_by(url: url).referrers.group_by {|referrer| referrer.url}.sort_by {|k, v| v.count}.reverse.map {|referrer| referrer.first}[0..2]
+  end
+
+  def self.top_agents(url)
+    Url.find_by(url: url).agents.group_by {|agent| "#{agent.os} #{agent.browser}" }.sort_by {|k,v| v.count }.reverse.map {|agent| agent.first}[0..2]
   end
 
 end
