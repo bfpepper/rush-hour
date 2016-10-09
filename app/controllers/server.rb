@@ -1,9 +1,14 @@
+
 module RushHour
   class Server < Sinatra::Base
     not_found do
       erb :error
     end
-    
-    # Write the rest of your controller code here!
+
+    post '/sources' do
+      binding.pry
+      erb :"clients/new"
+    end
+
   end
 end
