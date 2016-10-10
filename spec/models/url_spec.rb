@@ -13,11 +13,12 @@ RSpec.describe "Url" do
 
     expect(result).to_not be_valid
   end
+
   describe '.most_to_least_requested' do
     it "returns list of URLs listed form most requested to least requested" do
       u1 = Url.create(url: "www.google.com")
       u2 = Url.create(url: "www.facebook.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -29,7 +30,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -40,7 +41,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u2.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -58,7 +59,7 @@ RSpec.describe "Url" do
   describe ".min_response" do
     it "returns the minimun response time form a given URL" do
       u1 = Url.create(url: "www.google.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -70,7 +71,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -81,13 +82,13 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-        expect(Url.min_response("www.google.com")).to eq(37)
+        expect(u1.min_response).to eq(37)
     end
   end
   describe ".max_response" do
     it "returns the maximum response time form a given URL" do
       u1 = Url.create(url: "www.google.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -99,7 +100,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -110,13 +111,14 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-        expect(Url.max_response(u1.url)).to eq(40)
+        expect(u1.max_response).to eq(40)
     end
   end
+
   describe ".ordered_response_times" do
     it "returns an order list of response times from slowest to fastest." do
       u1 = Url.create(url: "www.google.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 37,
@@ -128,7 +130,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 50,
@@ -139,13 +141,14 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      expect(Url.ordered_response_times(u1.url)).to eq([50, 37])
+      expect(u1.ordered_response_times).to eq([50, 37])
     end
   end
+
   describe ".averaged_response_time" do
     it "returns the average response time." do
       u1 = Url.create(url: "www.google.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -157,7 +160,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 50,
@@ -168,16 +171,17 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      expect(Url.average_response_time(u1.url)).to eq(45)
+      expect(u1.average_response_time).to eq(45)
     end
   end
+
   describe ".request_type" do
     it "returns a list of all http verbs." do
       u1 = Url.create(url: "www.google.com")
       r1 = RequestType.create(request: "GET")
       r2 = RequestType.create(request: "PUT")
       RequestType.create(request: "POST")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -189,7 +193,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 50,
@@ -200,7 +204,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 50,
@@ -211,9 +215,10 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      expect(Url.verb_list(u1.url)).to eq(["GET", "PUT"])
+      expect(u1.verb_list).to eq(["GET", "PUT"])
     end
   end
+
   describe ".top_referrers" do
     it "returns a list of top 3 referrers" do
       u1 = Url.create(url: "www.google.com")
@@ -221,7 +226,7 @@ RSpec.describe "Url" do
       r2 = Referrer.create(url: "www.facebook.com")
       r3 = Referrer.create(url: "www.today.turing.io")
       r4 = Referrer.create(url: "www.cnn.com")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -232,7 +237,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -243,7 +248,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -254,7 +259,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                 url_id: u1.id,
                                 requested_at: "2013-02-16 21:38:28 -0700",
                                 responded_in: 40,
@@ -265,7 +270,7 @@ RSpec.describe "Url" do
                                 ip_id: 53243,
                                 screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -276,7 +281,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -287,7 +292,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -298,7 +303,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -309,7 +314,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -320,7 +325,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -332,7 +337,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      expect(Url.top_referrers(u1.url)).to eq([r1.url, r2.url, r3.url])
+      expect(u1.top_referrers).to eq([r1.url, r2.url, r3.url])
     end
   end
 
@@ -343,7 +348,7 @@ RSpec.describe "Url" do
       a2 = Agent.create(os: "mac", browser: "safari")
       a3 = Agent.create(os: "windows", browser: "chrome")
       a4 = Agent.create(os: "windows", browser: "ie3")
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -354,7 +359,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -365,7 +370,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -376,7 +381,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                 url_id: u1.id,
                                 requested_at: "2013-02-16 21:38:28 -0700",
                                 responded_in: 40,
@@ -387,7 +392,7 @@ RSpec.describe "Url" do
                                 ip_id: 53243,
                                 screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -398,7 +403,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -409,7 +414,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -420,7 +425,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -431,7 +436,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -442,7 +447,7 @@ RSpec.describe "Url" do
                                   ip_id: 53243,
                                   screen_resolution_id: 3
                                 })
-      Payload.find_or_create_by({
+      Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
                                   responded_in: 40,
@@ -454,7 +459,7 @@ RSpec.describe "Url" do
                                   screen_resolution_id: 3
                                 })
 
-      expect(Url.top_agents(u1.url)).to eq(["#{a1.os} #{a1.browser}", "#{a2.os} #{a2.browser}","#{a3.os} #{a3.browser}"])
+      expect(u1.top_agents).to eq(["#{a1.os} #{a1.browser}", "#{a2.os} #{a2.browser}","#{a3.os} #{a3.browser}"])
     end
   end
 end

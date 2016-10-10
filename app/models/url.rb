@@ -11,32 +11,32 @@ class Url < ActiveRecord::Base
     url_key.map {|key| Url.find(key).url}
   end
 
-  def self.min_response(url)
-    Url.find_by(url: url).payloads.minimum("responded_in")
+  def min_response
+    payloads.minimum("responded_in")
   end
 
-  def self.max_response(url)
-    Url.find_by(url: url).payloads.maximum("responded_in")
+  def max_response
+    payloads.maximum("responded_in")
   end
 
-  def self.ordered_response_times(url)
-    Url.find_by(url: url).payloads.order(responded_in: :desc).map {|payload| payload.responded_in}
+  def ordered_response_times
+    payloads.order(responded_in: :desc).map {|payload| payload.responded_in}
   end
 
-  def self.average_response_time(url)
-    Url.find_by(url: url).payloads.average('responded_in')
+  def average_response_time
+    payloads.average('responded_in')
   end
 
-  def self.verb_list(url)
-    Url.find_by(url: url).request_types.map{|request_type| request_type.request}.uniq
+  def verb_list
+    request_types.map{|request_type| request_type.request}.uniq
   end
 
-  def self.top_referrers(url)
-    Url.find_by(url: url).referrers.group_by {|referrer| referrer.url}.sort_by {|k, v| v.count}.reverse.map {|referrer| referrer.first}[0..2]
+  def top_referrers
+    referrers.group_by {|referrer| referrer.url}.sort_by {|k, v| v.count}.reverse.map {|referrer| referrer.first}[0..2]
   end
 
-  def self.top_agents(url)
-    Url.find_by(url: url).agents.group_by {|agent| "#{agent.os} #{agent.browser}" }.sort_by {|k,v| v.count }.reverse.map {|agent| agent.first}[0..2]
+  def top_agents
+    agents.group_by {|agent| "#{agent.os} #{agent.browser}" }.sort_by {|k,v| v.count }.reverse.map {|agent| agent.first}[0..2]
   end
 
 end
