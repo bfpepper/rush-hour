@@ -1,5 +1,3 @@
-
-
 module RushHour
   class Server < Sinatra::Base
     not_found do
@@ -22,7 +20,14 @@ module RushHour
 
     post '/sources/:IDENTIFIER/data' do
       p1 = Payload.payload_constructor(params)
-      binding.pry
+      client = Client.find_by(identifier: params[:IDENTIFIER])
+      if !client
+        status 403
+        body "Client doesn't exist."
+      elsif Payload.already_exists?(params, client.id)
+      status 403
+      body "This is already entered"
+    else
     end
   end
 end
