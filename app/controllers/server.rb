@@ -6,9 +6,16 @@ module RushHour
     end
 
     post '/sources' do
-      binding.pry
-      erb :"clients/new"
+      if params[:identifier].nil? || params[:rootUrl].nil?
+        status 403
+        body "Missing Paramaters"
+      elsif Client.find_by(identifier: params[:identifier], root_url: params[:rootUrl])
+        status 403
+        body "Identifier Already Exists"
+      elsif Client.create(identifier: params[:identifier], root_url: params[:rootUrl])
+        status 200
+        body "identifier: #{params[:identifier]}"
+      end
     end
-
   end
 end
