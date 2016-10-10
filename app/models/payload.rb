@@ -18,15 +18,15 @@ class Payload < ActiveRecord::Base
   validates :event_name_id, presence: true
 
   def self.average_response
-    Payload.average("responded_in")
+    average("responded_in")
   end
 
   def self.max_response
-    Payload.maximum("responded_in")
+    maximum("responded_in")
   end
 
   def self.min_response
-    Payload.minimum("responded_in")
+    minimum("responded_in")
   end
 
 
