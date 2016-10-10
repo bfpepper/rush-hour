@@ -29,5 +29,20 @@ class Payload < ActiveRecord::Base
     minimum("responded_in")
   end
 
+  def self.payload_constructor(params)
+    input = JSON.parse(params[:payload])
 
+    Payload.create(
+                    requested_at: input["requestedAt"],
+                    url_id: Url.find_or_create_by(url: input["url"]).id,
+                    responded_in: input["respondedIn"],
+                    referrer_id: Referrer.find_or_create_by(url: input["referredBy"]).id,
+                    request_type_id: RequestType.find_or_create_by(request: input["requestType"]).id,
+                    event_name_id: EventName.find_or_create_by(event: input["eventName"]).id,
+                    agent_id: Agent.find_or_create_by(os: UserAgent.parse(input["userAgent"].gsub('%3B',';')).platform, browser: UserAgent.parse(input["userAgent"]).browser).id,
+                    screen_resolution_id: ScreenResolution.find_or_create_by(width: input["resolutionWidth"], height: input["resolutionHeight"]).id,
+                    ip_id: Ip.find_or_create_by(address: input["ip"]).id,
+                    client_id: Client.find_by(identifier: params["IDENTIFIER"]).id
+    )
+  end
 end
