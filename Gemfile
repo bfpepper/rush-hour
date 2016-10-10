@@ -5,9 +5,9 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'useragent'
+gem 'pry'
 
 group :development, :test do
-  gem 'pry'
   gem 'rb-readline'
   gem 'shotgun'
   gem 'rspec'

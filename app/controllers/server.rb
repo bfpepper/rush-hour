@@ -1,9 +1,21 @@
+
 module RushHour
   class Server < Sinatra::Base
     not_found do
       erb :error
     end
-    
-    # Write the rest of your controller code here!
+
+    post '/sources' do
+      if params[:identifier].nil? || params[:rootUrl].nil?
+        status 403
+        body "Missing Paramaters"
+      elsif Client.find_by(identifier: params[:identifier], root_url: params[:rootUrl])
+        status 403
+        body "Identifier Already Exists"
+      elsif Client.create(identifier: params[:identifier], root_url: params[:rootUrl])
+        status 200
+        body "identifier: #{params[:identifier]}"
+      end
+    end
   end
 end
