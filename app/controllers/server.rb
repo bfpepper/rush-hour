@@ -1,4 +1,5 @@
 
+
 module RushHour
   class Server < Sinatra::Base
     not_found do
@@ -14,7 +15,8 @@ module RushHour
         body "Identifier Already Exists"
       elsif Client.create(identifier: params[:identifier], root_url: params[:rootUrl])
         status 200
-        body "identifier: #{params[:identifier]}"
+        result = {"identifier": params["identifier"]}.to_json
+        body result
       end
     end
   end
