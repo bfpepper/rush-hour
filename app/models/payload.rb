@@ -29,12 +29,8 @@ class Payload < ActiveRecord::Base
     minimum("responded_in")
   end
 
-  def parse_payload(params)
-    JSON.parse(params[:payload])
-  end
-
   def self.payload_constructor(params)
-    input = parse_payload(params)
+    input = JSON.parse(params[:payload])
 
     Payload.create(
                     requested_at: input["requestedAt"],
@@ -51,7 +47,7 @@ class Payload < ActiveRecord::Base
   end
 
   def self.already_exists?(params, client_id)
-    input = parse_payload(params)
+    input = JSON.parse(params[:payload])
 
     url = Url.find_by(url: input['url'])
     referrer = Referrer.find_by(url: input['referredBy'])
@@ -65,7 +61,7 @@ class Payload < ActiveRecord::Base
       Payload.exist?(responded_in: input['respondedIn'],
                      requested_at: input['requestedAt'],
                      url_id: url.id,
-                     referrer_id: referrer.id
+                     referrer_id: referrer.id,
                      request_type_id: request_type.id,
                      agent_id: agent.id,
                      screen_resolution_id: screen.id,
