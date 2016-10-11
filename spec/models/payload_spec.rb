@@ -12,7 +12,8 @@ RSpec.describe "Payload" do
                      event_id: 4,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -26,7 +27,8 @@ RSpec.describe "Payload" do
                      event_id: 4,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -40,7 +42,8 @@ RSpec.describe "Payload" do
                      event_id: 4,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -54,7 +57,8 @@ RSpec.describe "Payload" do
                      event_id: 4,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -68,7 +72,8 @@ RSpec.describe "Payload" do
                      event_id: 4,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -82,7 +87,8 @@ RSpec.describe "Payload" do
                      request_type_id: 3,
                      agent_id: 15,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -96,7 +102,8 @@ RSpec.describe "Payload" do
                      request_type_id: 3,
                      event_id: 4,
                      screen_resolution_id: 7,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -110,7 +117,8 @@ RSpec.describe "Payload" do
                      request_type_id: 3,
                      event_id: 4,
                      agent_id: 15,
-                     ip_id: 3545)
+                     ip_id: 3545,
+                     client_id: 2)
 
     expect(result).to_not be_valid
   end
@@ -124,6 +132,22 @@ RSpec.describe "Payload" do
                      request_type_id: 3,
                      event_id: 4,
                      agent_id: 15,
+                     screen_resolution_id: 7,
+                     client_id: 2)
+
+    expect(result).to_not be_valid
+  end
+  it "is invalid without a client id" do
+
+    result = Payload.create(
+                     url_id: 18,
+                     requested_at: "2013-02-16 21:38:28 -0700",
+                     responded_in: 37,
+                     referrer_id: 1,
+                     request_type_id: 3,
+                     event_id: 4,
+                     agent_id: 15,
+                     ip_id: 3545,
                      screen_resolution_id: 7)
 
     expect(result).to_not be_valid
@@ -139,7 +163,8 @@ RSpec.describe "Payload" do
                        event_id: 4,
                        agent_id: 15,
                        screen_resolution_id: 7,
-                       ip_id: 17)
+                       ip_id: 17,
+                       client_id: 2)
       Payload.create(
                       url_id: 18,
                       requested_at: "2013-02-16 21:38:28 -0700",
@@ -149,7 +174,8 @@ RSpec.describe "Payload" do
                       event_id: 4,
                       agent_id: 15,
                       screen_resolution_id: 7,
-                      ip_id: 17)
+                      ip_id: 17,
+                      client_id: 2)
 
       expect(Payload.average_response).to eq(15)
     end
@@ -166,7 +192,8 @@ RSpec.describe "Payload" do
                        event_id: 4,
                        agent_id: 15,
                        screen_resolution_id: 7,
-                       ip_id: 17)
+                       ip_id: 17,
+                       client_id: 2)
       Payload.create(
                       url_id: 18,
                       requested_at: "2013-02-16 21:38:28 -0700",
@@ -176,7 +203,8 @@ RSpec.describe "Payload" do
                       event_id: 4,
                       agent_id: 15,
                       screen_resolution_id: 7,
-                      ip_id: 17)
+                      ip_id: 17,
+                      client_id: 2)
 
       expect(Payload.max_response).to eq(20)
     end
@@ -193,7 +221,8 @@ RSpec.describe "Payload" do
                        event_id: 4,
                        agent_id: 15,
                        screen_resolution_id: 7,
-                       ip_id: 17)
+                       ip_id: 17,
+                       client_id: 2)
       Payload.create(
                       url_id: 18,
                       requested_at: "2013-02-16 21:38:28 -0700",
@@ -203,7 +232,8 @@ RSpec.describe "Payload" do
                       event_id: 4,
                       agent_id: 15,
                       screen_resolution_id: 7,
-                      ip_id: 17)
+                      ip_id: 17,
+                      client_id: 2)
 
       expect(Payload.min_response).to eq(10)
     end
