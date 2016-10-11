@@ -11,7 +11,7 @@ RSpec.describe "ScreenResolution" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 432,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: s1.id
@@ -23,7 +23,7 @@ RSpec.describe "ScreenResolution" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 89,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: s1.id
@@ -34,7 +34,7 @@ RSpec.describe "ScreenResolution" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: s2.id

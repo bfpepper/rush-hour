@@ -24,7 +24,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -36,7 +36,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -47,7 +47,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -65,7 +65,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -77,7 +77,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -94,7 +94,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -106,7 +106,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -124,7 +124,7 @@ RSpec.describe "Url" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -136,7 +136,7 @@ RSpec.describe "Url" do
                                   responded_in: 50,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -154,7 +154,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 40,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -166,7 +166,7 @@ RSpec.describe "Url" do
                                   responded_in: 50,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -187,7 +187,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 40,
                                   request_type_id: r1.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -199,7 +199,7 @@ RSpec.describe "Url" do
                                   responded_in: 50,
                                   referrer_id: 43,
                                   request_type_id: r2.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -210,7 +210,7 @@ RSpec.describe "Url" do
                                   responded_in: 50,
                                   referrer_id: 43,
                                   request_type_id: r1.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -232,7 +232,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r1.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -243,7 +243,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r1.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -254,7 +254,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r1.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -265,7 +265,7 @@ RSpec.describe "Url" do
                                 responded_in: 40,
                                 referrer_id: r4.id,
                                 request_type_id: 3,
-                                event_name_id: 54,
+                                event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
                                 screen_resolution_id: 3
@@ -276,7 +276,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r1.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -287,7 +287,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r2.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -298,7 +298,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r2.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -309,7 +309,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r2.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -320,7 +320,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r3.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -331,7 +331,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: r3.id,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -354,7 +354,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 54,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a4.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -365,7 +365,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 64,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -376,7 +376,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 74,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -387,7 +387,7 @@ RSpec.describe "Url" do
                                 responded_in: 40,
                                 referrer_id: 75,
                                 request_type_id: 3,
-                                event_name_id: 54,
+                                event_id: 54,
                                 agent_id: a1.id,
                                 ip_id: 53243,
                                 screen_resolution_id: 3
@@ -398,7 +398,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 6,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -409,7 +409,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 65,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -420,7 +420,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 76,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -431,7 +431,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 76,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -442,7 +442,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 99,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a3.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -453,7 +453,7 @@ RSpec.describe "Url" do
                                   responded_in: 40,
                                   referrer_id: 23,
                                   request_type_id: 3,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a3.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
