@@ -60,6 +60,6 @@ class Payload < ActiveRecord::Base
                     ip: Ip.find_by(address: input["ip"]),
                     client: Client.find_by(identifier: params["IDENTIFIER"])
                     )
-    binding.pry
+  binding.pry
   end
 end
