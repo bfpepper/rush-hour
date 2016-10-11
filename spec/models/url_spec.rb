@@ -73,7 +73,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
 
       Payload.create({
@@ -85,7 +86,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
         expect(u1.min_response).to eq(37)
     end
@@ -102,7 +104,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
 
       Payload.create({
@@ -114,7 +117,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
         expect(u1.max_response).to eq(40)
     end
@@ -132,7 +136,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
 
       Payload.create({
@@ -144,7 +149,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
       expect(u1.ordered_response_times).to eq([50, 37])
     end
@@ -162,7 +168,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
 
       Payload.create({
@@ -174,7 +180,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       expect(u1.average_response_time).to eq(45)
     end
@@ -195,7 +201,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
 
       Payload.create({
@@ -207,7 +213,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -218,7 +224,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       expect(u1.verb_list).to eq(["GET", "PUT"])
     end
@@ -240,7 +246,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -251,7 +257,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -262,7 +268,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                 url_id: u1.id,
@@ -273,7 +279,7 @@ RSpec.describe "Url" do
                                 event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
-                                screen_resolution_id: 3
+                                screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -284,7 +290,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -295,7 +301,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -306,7 +312,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -317,7 +323,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -328,7 +334,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -339,7 +345,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
 
       expect(u1.top_referrers).to eq([r1.url, r2.url, r3.url])
@@ -362,7 +368,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a4.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -373,7 +379,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -384,7 +390,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                 url_id: u1.id,
@@ -395,7 +401,7 @@ RSpec.describe "Url" do
                                 event_id: 54,
                                 agent_id: a1.id,
                                 ip_id: 53243,
-                                screen_resolution_id: 3
+                                screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -406,7 +412,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -417,7 +423,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -428,7 +434,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -439,7 +445,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -450,7 +456,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a3.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
       Payload.create({
                                   url_id: u1.id,
@@ -461,7 +467,7 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: a3.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3, client_id: 3
                                 })
 
       expect(u1.top_agents).to eq(["#{a1.os} #{a1.browser}", "#{a2.os} #{a2.browser}","#{a3.os} #{a3.browser}"])
