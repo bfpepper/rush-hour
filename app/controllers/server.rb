@@ -27,7 +27,7 @@ module RushHour
       elsif Payload.already_exists?(params, client.id)
         status 403
         body "This is already entered"
-      elsif p1.values.include?(nil) || parsed_payload.empty?
+      elsif p1.values.include?(nil) || p1.empty?
         status 400
         body "No payload request found"
       else
