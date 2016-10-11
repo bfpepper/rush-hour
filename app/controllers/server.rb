@@ -35,5 +35,11 @@ module RushHour
         body "payload created"
       end
     end
+
+    #new route for a client to see aggregate data
+    get '/sources/:IDENTIFIER' do
+      @client = Client.find_by(identifier:params["IDENTIFIER"])
+      erb :"clients/show"
+    end
   end
 end
