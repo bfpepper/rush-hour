@@ -1,0 +1,34 @@
+<h1>Hey <%= @client.identifier %></h1>
+
+<h3>Average Response Time</h3>
+  <p><%=@client.payloads.average_response  %></p></br>
+
+<h3>Max Response Time</h3>
+
+<p><%= @client.payloads.max_response %></p></br>
+
+<h3>Min Response Time</h3>
+
+<p><%= @client.payloads.min_response %></p></br>
+
+<h3>Most Frequent Response Type</h3>
+
+<p><%= @client.request_types.most_frequent %></p></br>
+
+<h3>List of HTTP Verbs</h3>
+
+<p> <%= @client.request_types.all_verbs %></p></br>
+
+<h3>List of Urls</h3>
+
+<p> <%= @client.urls.most_to_least_requested %></p></br>
+
+<h3>Web Browser Breakdown</h3>
+
+<p></p></br>
+<h3>OS Breakdown</h3>
+
+<p></p></br>
+<h3>Screen Resolutions</h3>
+
+<p></p></br>
