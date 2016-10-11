@@ -36,10 +36,16 @@ module RushHour
       end
     end
 
-    #new route for a client to see aggregate data
     get '/sources/:IDENTIFIER' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
-      erb :"clients/show"
+
+      if @client.nil?
+        erb :'clients/no_client'
+      elsif @client.payloads.empty?
+        erb :'clients/no_payloads'
+      else
+        erb :"clients/show"
+      end
     end
   end
 end
