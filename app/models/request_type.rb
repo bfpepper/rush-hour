@@ -7,6 +7,6 @@ class RequestType < ActiveRecord::Base
   end
 
   def self.all_verbs
-    RequestType.all.map {|type| type.request}
+    RequestType.all.map {|type| type.request}.uniq
   end
 end
