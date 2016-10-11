@@ -21,27 +21,29 @@ module RushHour
     post '/sources/:IDENTIFIER/data' do
       if params[:payload].nil?
         status 400
-        body "missing payload"
+        body "Missing Payload"
       elsif Client.find_by(identifier:params["IDENTIFIER"]).nil?
         status 403
-        body "no client"
+        body "No Client"
       elsif
         Payload.already_exists?(params)
         status 403
-        body "already received"
+        body "Already Received"
       else
         Payload.payload_constructor(params)
         status 200
-        body "payload created"
+        body "Payload Created"
       end
     end
 
     get '/sources/:IDENTIFIER' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
       if @client.nil?
-        erb :'clients/no_client'
+        body "Client doesn't exist"
+        erb :error
       elsif @client.payloads.empty?
-        erb :'clients/no_payloads'
+        body "No payloads yet"
+        erb :error
       else
         erb :"clients/show"
       end
@@ -50,7 +52,12 @@ module RushHour
     get '/sources/:IDENTIFIER/urls/:RELATIVEPATH' do
       client = Client.find_by(identifier:params["IDENTIFIER"])
       @specific_url = client.urls.find_by(url: "#{client.root_url}/#{params[:RELATIVEPATH]}")
-      erb :"clients/url"
+      if @specific_url.nil?
+        body "Identifier doesn't exist"
+        erb :error
+      else
+        erb :"clients/url"
+      end
     end
 
   end
