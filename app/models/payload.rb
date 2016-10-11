@@ -39,7 +39,7 @@ class Payload < ActiveRecord::Base
                     responded_in: input["respondedIn"],
                     referrer: Referrer.find_or_create_by(url: input["referredBy"]),
                     request_type: RequestType.find_or_create_by(request: input["requestType"]),
-                    event_id: Event.find_or_create_by(event: input["eventName"]).id,
+                    event: Event.find_or_create_by(event: input["eventName"]),
                     agent: Agent.find_or_create_by(os: UserAgent.parse(input["userAgent"].gsub('%3B',';')).platform, browser: UserAgent.parse(input["userAgent"]).browser),
                     screen_resolution: ScreenResolution.find_or_create_by(width: input["resolutionWidth"], height: input["resolutionHeight"]),
                     ip: Ip.find_or_create_by(address: input["ip"]),
@@ -49,7 +49,7 @@ class Payload < ActiveRecord::Base
 
   def self.already_exists?(params)
     input = JSON.parse(params[:payload])
-    pay = Payload.where(requested_at: input["requestedAt"],
+    Payload.find_by(requested_at: input["requestedAt"].to_datetime,
                     url: Url.find_by(url: input["url"]),
                     responded_in: input["respondedIn"],
                     referrer: Referrer.find_by(url: input["referredBy"]),
@@ -60,6 +60,6 @@ class Payload < ActiveRecord::Base
                     ip: Ip.find_by(address: input["ip"]),
                     client: Client.find_by(identifier: params["IDENTIFIER"])
                     )
-  binding.pry
+
   end
 end
