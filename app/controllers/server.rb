@@ -38,7 +38,6 @@ module RushHour
 
     get '/sources/:IDENTIFIER' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
-    
       if @client.nil?
         erb :'clients/no_client'
       elsif @client.payloads.empty?
@@ -47,5 +46,12 @@ module RushHour
         erb :"clients/show"
       end
     end
+
+    get '/sources/:IDENTIFIER/urls/:RELATIVEPATH' do
+      client = Client.find_by(identifier:params["IDENTIFIER"])
+      @specific_url = client.urls.find_by(url: "#{client.root_url}/#{params[:RELATIVEPATH]}")
+      erb :"clients/url"
+    end
+
   end
 end
