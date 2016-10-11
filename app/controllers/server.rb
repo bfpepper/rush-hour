@@ -19,32 +19,20 @@ module RushHour
     end
 
     post '/sources/:IDENTIFIER/data' do
-      input = JSON.parse(params[:payload])
-
-      #need a way to reference client
-      c1 = Client.find_by(identifier:params["IDENTIFIER"])
-
-      #missing payload 400 bad request, if payload is Missing
-      #??  can we call on this if they don't exist at all. Maybe .nil?
-      if params[:payload].empty?
+      if params[:payload].nil?
         status 400
         body "missing payload"
-
-
-      #application not registered 403, if it doesn't correspond to an already existing client(identifier/rooturl pair)
-      elsif c1.nil?
+      elsif Client.find_by(identifier:params["IDENTIFIER"]).nil?
         status 403
         body "no client"
-
-      #already received request 403 forbidden, if we already made that exact payload
-      elsif Payload.already_exists?(params)
+      elsif
+        Payload.already_exists?(params)
         status 403
         body "already received"
-
-
-      #success 200 ok, for unique payload.
-      else Payload.payload_constructor(params)
+      else
+        Payload.payload_constructor(params)
         status 200
+        body "payload created"
       end
     end
   end
