@@ -7,8 +7,8 @@ class Url < ActiveRecord::Base
   validates :url, presence: true
 
   def self.most_to_least_requested
-    url_key = Payload.all.group(:url_id).order('count(*) DESC').count.keys
-    url_key.map {|key| find(key).url}
+    url_keys = all.group(:url_id).order('count(*) DESC').count.keys
+    url_keys.map {|key| find(key).url}
   end
 
   def min_response
