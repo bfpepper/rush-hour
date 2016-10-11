@@ -6,6 +6,7 @@ class Client < ActiveRecord::Base
   has_many :request_types, through: :payloads
   has_many :screen_resolutions, through: :payloads
   has_many :agents, through: :payloads
+  has_many :events, through: :payloads
 
   validates :identifier, presence: true
   validates :root_url, presence: true
