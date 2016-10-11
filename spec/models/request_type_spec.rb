@@ -11,7 +11,7 @@ RSpec.describe "RequestType" do
                                 responded_in: 37,
                                 referrer_id: 43,
                                 request_type_id: r1.id,
-                                event_name_id: 54,
+                                event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
                                 screen_resolution_id: 3
@@ -23,7 +23,7 @@ RSpec.describe "RequestType" do
                                 responded_in: 37,
                                 referrer_id: 43,
                                 request_type_id: r2.id,
-                                event_name_id: 54,
+                                event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
                                 screen_resolution_id: 3
@@ -34,7 +34,7 @@ RSpec.describe "RequestType" do
                                 responded_in: 37,
                                 referrer_id: 43,
                                 request_type_id: r1.id,
-                                event_name_id: 54,
+                                event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
                                 screen_resolution_id: 3
@@ -53,7 +53,7 @@ RSpec.describe "RequestType" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: r1.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -65,7 +65,7 @@ RSpec.describe "RequestType" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: r2.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -76,7 +76,7 @@ RSpec.describe "RequestType" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: r1.id,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
                                   screen_resolution_id: 3

@@ -12,7 +12,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -24,7 +24,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -35,7 +35,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -56,7 +56,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 1,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -68,7 +68,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
@@ -79,7 +79,7 @@ RSpec.describe "Agent" do
                                   responded_in: 37,
                                   referrer_id: 43,
                                   request_type_id: 2,
-                                  event_name_id: 54,
+                                  event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
                                   screen_resolution_id: 3
