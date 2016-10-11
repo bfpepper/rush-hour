@@ -38,7 +38,7 @@ module RushHour
 
     get '/sources/:IDENTIFIER' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
-
+    
       if @client.nil?
         erb :'clients/no_client'
       elsif @client.payloads.empty?
