@@ -5,6 +5,8 @@ RSpec.describe "ScreenResolution" do
     it "returns screen breakdown across all payloads" do
       s1 = ScreenResolution.create(height: "500", width: "5000")
       s2 = ScreenResolution.create(height: "80", width: "800")
+      c1 = Client.create(identifier: "apple", root_url: "wwww.client.com")
+
       Payload.find_or_create_by({
                                   url_id: 1,
                                   requested_at: "2013-02-16 21:38:28 -0700",
@@ -14,7 +16,8 @@ RSpec.describe "ScreenResolution" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: s1.id
+                                  screen_resolution_id: s1.id,
+                                  client_id: c1.id
                                 })
 
       Payload.find_or_create_by({
@@ -26,7 +29,8 @@ RSpec.describe "ScreenResolution" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: s1.id
+                                  screen_resolution_id: s1.id,
+                                  client_id: c1.id
                                 })
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -37,10 +41,11 @@ RSpec.describe "ScreenResolution" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: s2.id
+                                  screen_resolution_id: s2.id,
+                                  client_id: c1.id
                                 })
 
-        expect(ScreenResolution.screen_breakdown).to eq(["#{s1.width} x #{s1.height}", "#{s2.width} x #{s2.height}"])
+        expect(c1.screen_resolutions.screen_breakdown).to eq(["#{s1.width} x #{s1.height}", "#{s2.width} x #{s2.height}"])
     end
   end
 end

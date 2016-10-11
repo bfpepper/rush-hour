@@ -14,7 +14,8 @@ RSpec.describe "RequestType" do
                                 event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
-                                screen_resolution_id: 3
+                                screen_resolution_id: 3,
+                                client_id: 3
                               })
 
     Payload.find_or_create_by({
@@ -26,7 +27,8 @@ RSpec.describe "RequestType" do
                                 event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
-                                screen_resolution_id: 3
+                                screen_resolution_id: 3,
+                                client_id: 3
                               })
     Payload.find_or_create_by({
                                 url_id: 1,
@@ -37,7 +39,8 @@ RSpec.describe "RequestType" do
                                 event_id: 54,
                                 agent_id: 24,
                                 ip_id: 53243,
-                                screen_resolution_id: 3
+                                screen_resolution_id: 3,
+                                client_id: 3
                               })
 
       expect(RequestType.most_frequent).to eq("GET")
@@ -56,7 +59,8 @@ RSpec.describe "RequestType" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
 
       Payload.find_or_create_by({
@@ -68,7 +72,8 @@ RSpec.describe "RequestType" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -79,7 +84,8 @@ RSpec.describe "RequestType" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: 3
                                 })
 
         expect(RequestType.all_verbs).to eq(["GET", "POST"])

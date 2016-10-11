@@ -4,7 +4,7 @@ class ScreenResolution < ActiveRecord::Base
   validates :height, presence: true
 
   def self.screen_breakdown
-    sr = Payload.all.group(:screen_resolution_id).order('count(*) DESC').count.keys
+    sr = all.group(:screen_resolution_id).order('count(*) DESC').count.keys
 
     sr.map do |sr_id|
       height = ScreenResolution.find(sr_id).height

@@ -35,5 +35,17 @@ module RushHour
         body "payload created"
       end
     end
+
+    get '/sources/:IDENTIFIER' do
+      @client = Client.find_by(identifier:params["IDENTIFIER"])
+    
+      if @client.nil?
+        erb :'clients/no_client'
+      elsif @client.payloads.empty?
+        erb :'clients/no_payloads'
+      else
+        erb :"clients/show"
+      end
+    end
   end
 end

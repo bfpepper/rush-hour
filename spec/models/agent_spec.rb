@@ -5,6 +5,7 @@ RSpec.describe "Agent" do
     it "returns the browser breakdown across all payloads" do
       a1 = Agent.create(os: "mac", browser: "chrome")
       a2 = Agent.create(os: "windows", browser: "safari")
+      c1 = Client.create(identifier: "apple", root_url: "wwww.client.com")
 
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -15,7 +16,8 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
       Payload.find_or_create_by({
@@ -27,7 +29,8 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -38,10 +41,11 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
-        expect(Agent.browser_breakdown).to eq([a1.browser, a2.browser])
+        expect(c1.agents.browser_breakdown).to eq([a1.browser, a2.browser])
     end
   end
 
@@ -49,6 +53,7 @@ RSpec.describe "Agent" do
     it "returns the os breakdown across all payloads" do
       a1 = Agent.create(os: "mac", browser: "chrome")
       a2 = Agent.create(os: "windows", browser: "safari")
+      c1 = Client.create(identifier: "apple", root_url: "wwww.client.com")
 
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -59,7 +64,8 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
       Payload.find_or_create_by({
@@ -71,7 +77,8 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a1.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
       Payload.find_or_create_by({
                                   url_id: 1,
@@ -82,10 +89,11 @@ RSpec.describe "Agent" do
                                   event_id: 54,
                                   agent_id: a2.id,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
-        expect(Agent.os_breakdown).to eq([a1.os, a2.os])
+        expect(c1.agents.os_breakdown).to eq([a1.os, a2.os])
     end
   end
 end
