@@ -18,6 +18,8 @@ RSpec.describe "Url" do
     it "returns list of URLs listed form most requested to least requested" do
       u1 = Url.create(url: "www.google.com")
       u2 = Url.create(url: "www.facebook.com")
+      c1 = Client.create(identifier: "apple", root_url: "wwww.client.com")
+
       Payload.create({
                                   url_id: u1.id,
                                   requested_at: "2013-02-16 21:38:28 -0700",
@@ -27,7 +29,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
       Payload.create({
@@ -39,7 +42,8 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
       Payload.create({
                                   url_id: u2.id,
@@ -50,10 +54,11 @@ RSpec.describe "Url" do
                                   event_id: 54,
                                   agent_id: 24,
                                   ip_id: 53243,
-                                  screen_resolution_id: 3
+                                  screen_resolution_id: 3,
+                                  client_id: c1.id
                                 })
 
-        expect(Url.most_to_least_requested).to eq([u1.url, u2.url])
+        expect(c1.urls.most_to_least_requested).to eq([u1.url, u2.url])
     end
   end
   describe ".min_response" do
