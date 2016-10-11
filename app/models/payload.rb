@@ -17,7 +17,7 @@ class Payload < ActiveRecord::Base
   validates :screen_resolution_id, presence: true
   validates :request_type_id, presence: true
   validates :event_id, presence: true
-  validates :client_id, presence: true 
+  validates :client_id, presence: true
 
   def self.average_response
     average("responded_in")
