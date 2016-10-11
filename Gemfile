@@ -6,6 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'useragent'
 gem 'pry'
+gem 'byebug'
 
 group :development, :test do
   gem 'rb-readline'
