@@ -60,12 +60,13 @@ module RushHour
         erb :"clients/url"
       end
     end
-    #make something that grabs all the payloads of a client of a given event, sorts them into 24 categories(that themselves are hours) and puts the events
 
     get '/sources/:IDENTIFIER/events/:EVENTNAME' do
       client = Client.find_by(identifier:params["IDENTIFIER"])
       event = Event.find_by(event:params["EVENTNAME"])
-  byebug
+      @hourly = client.hourly_breakdown(event)
+
+      erb :"clients/hourly_events"
     end
   end
 end
