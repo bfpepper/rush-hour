@@ -49,16 +49,31 @@ end
 
 def create_payload(data)
   hash = Payload.create({
-                  url_id: 1,
-                  requested_at: Time.now,
-                  responded_in: 37,
-                  referrer_id: 43,
-                  request_type_id: 1,
-                  event_id: 54,
-                  agent_id: 24,
-                  ip_id: 53243,
-                  screen_resolution_id: 3,
-                  client_id: 3
-                })
+                          url_id: 1,
+                          requested_at: Time.now,
+                          responded_in: 1,
+                          referrer_id: 1,
+                          request_type_id: 1,
+                          event_id: 1,
+                          agent_id: 1,
+                          ip_id: 1,
+                          screen_resolution_id: 1,
+                          client_id: 1
+                        })
   hash.update(data)
+end
+
+def create_payload_hash(data)
+  {  
+    url_id: 1,
+    requested_at: Time.now,
+    responded_in: 1,
+    referrer_id: 1,
+    request_type_id: 1,
+    event_id: 1,
+    agent_id: 1,
+    ip_id: 1,
+    screen_resolution_id: 1,
+    client_id: 1
+  }.update(data)
 end
