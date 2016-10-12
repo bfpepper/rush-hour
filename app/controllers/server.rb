@@ -5,35 +5,11 @@ module RushHour
     end
 
     post '/sources' do
-      if params[:identifier].nil? || params[:rootUrl].nil?
-        status 403
-        body "Missing Paramaters"
-      elsif Client.find_by(identifier: params[:identifier], root_url: params[:rootUrl])
-        status 403
-        body "Identifier Already Exists"
-      elsif Client.create(identifier: params[:identifier], root_url: params[:rootUrl])
-        status 200
-        result = {"identifier": params["identifier"]}.to_json
-        body result
-      end
+      Client.validate_and_add_client(params)
     end
 
     post '/sources/:IDENTIFIER/data' do
-      if params[:payload].nil?
-        status 400
-        body "Missing Payload"
-      elsif Client.find_by(identifier:params["IDENTIFIER"]).nil?
-        status 403
-        body "No Client"
-      elsif
-        Payload.already_exists?(params)
-        status 403
-        body "Already Received"
-      else
-        Payload.payload_constructor(params)
-        status 200
-        body "Payload Created"
-      end
+      Payload.validate_and_add_payload(params)
     end
 
     get '/sources/:IDENTIFIER' do
