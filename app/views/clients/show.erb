@@ -21,7 +21,15 @@
 
 <h3>List of Urls</h3>
 
-<p> <%= @client.urls.most_to_least_requested %></p></br>
+<ul>
+  <% @client.urls.most_to_least_requested.each do |url| %>
+    <li>
+      <a href="/sources/<%=@client.identifier%>/urls<%= URI(url).path %>">
+        <%= url %>
+      </a>
+    </li>
+  <% end %>
+</ul>
 
 <h3>Web Browser Breakdown</h3>
 
