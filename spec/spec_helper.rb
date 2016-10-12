@@ -79,3 +79,34 @@ def populate_url_table
   [Url.create(url: "www.google.com"),
   Url.create(url: "www.facebook.com")]
 end
+
+def create_payload(data)
+  hash = Payload.create({
+                          url_id: 1,
+                          requested_at: Time.now,
+                          responded_in: 1,
+                          referrer_id: 1,
+                          request_type_id: 1,
+                          event_id: 1,
+                          agent_id: 1,
+                          ip_id: 1,
+                          screen_resolution_id: 1,
+                          client_id: 1
+                        })
+  hash.update(data)
+end
+
+def create_payload_hash(data)
+  {  
+    url_id: 1,
+    requested_at: Time.now,
+    responded_in: 1,
+    referrer_id: 1,
+    request_type_id: 1,
+    event_id: 1,
+    agent_id: 1,
+    ip_id: 1,
+    screen_resolution_id: 1,
+    client_id: 1
+  }.update(data)
+end
