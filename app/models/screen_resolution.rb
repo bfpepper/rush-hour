@@ -7,8 +7,8 @@ class ScreenResolution < ActiveRecord::Base
     sr = all.group(:screen_resolution_id).order('count(*) DESC').count.keys
 
     sr.map do |sr_id|
-      height = ScreenResolution.find(sr_id).height
-      width = ScreenResolution.find(sr_id).width
+      height = find(sr_id).height
+      width = find(sr_id).width
       "#{width} x #{height}"
     end
   end
