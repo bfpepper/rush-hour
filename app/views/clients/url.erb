@@ -1,22 +1,36 @@
 <h1>Specific URL</h1>
 
-<h2>Minimum Response Time </h2>
-<p><%= @specific_url.min_response %></p><br>
+<div class="min">
+  <h2>Minimum Response Time </h2>
+  <p><%= @specific_url.min_response %></p><br>
+</div>
 
-<h2>Maximum Response Time </h2>
-<p><%= @specific_url.max_response %></p><br>
+<div class="max">
+  <h2>Maximum Response Time </h2>
+  <p><%= @specific_url.max_response %></p><br>
+</div>
 
-<h2>Ordered Response Times </h2>
-<p><%= @specific_url.ordered_response_times %></p><br>
+<div class="avg">
+  <h2>Average Response Time </h2>
+  <p><%= @specific_url.average_response_time %></p><br>
+</div>
 
-<h2>Average Response Time </h2>
-<p><%= @specific_url.average_response_time %></p><br>
+<div class="order">
+  <h2>Ordered Response Times </h2>
+  <p><%= @specific_url.ordered_response_times %></p><br>
+</div>
 
-<h2>All HTTP Verbs </h2>
-<p><%= @specific_url.verb_list %></p><br>
+<div class="verbs">
+  <h2>All HTTP Verbs </h2>
+  <p><%= @specific_url.verb_list %></p><br>
+</div>
 
-<h2>3 Most Popular Referrers </h2>
-<p><%= @specific_url.top_referrers%></p><br>
+<div class="referrer">
+  <h2>3 Most Popular Referrers </h2>
+  <p><%= @specific_url.top_referrers%></p><br>
+</div>
 
-<h2>3 Most Popular Agents </h2>
-<p><%= @specific_url.top_agents%></p><br>
+<div class="agent">
+  <h2>3 Most Popular Agents </h2>
+  <p><%= @specific_url.top_agents%></p><br>
+</div>
