@@ -3,8 +3,8 @@ require_relative '../spec_helper'
 RSpec.describe "ScreenResolution" do
   describe ".screen_breakdown" do
     it "returns screen breakdown across all payloads" do
-      s1 = ScreenResolution.create(height: "500", width: "5000")
-      s2 = ScreenResolution.create(height: "80", width: "800")
+      s1 = populate_screen_resolution_table.first
+      s2 = populate_screen_resolution_table.last
       c1 = Client.create(identifier: "apple", root_url: "wwww.client.com")
 
       Payload.find_or_create_by({
