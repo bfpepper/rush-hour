@@ -24,78 +24,26 @@ RSpec.describe "Url" do
   describe '.most_to_least_requested' do
     it "returns list of URLs listed form most requested to least requested" do
 
-      Payload.create({
-                                  url_id: @url1.id,
-                                  requested_at: "2013-02-16 21:38:28 -0700",
-                                  responded_in: 37,
-                                  referrer_id: 43,
-                                  request_type_id: 1,
-                                  event_id: 54,
-                                  agent_id: 24,
-                                  ip_id: 53243,
-                                  screen_resolution_id: 3,
-                                  client_id: @client1.id
-                                })
+      2.times do
+        create_payload({url_id: @url1.id, client_id: @client1.id})
+      end
 
-      Payload.create({
-                                  url_id: @url1.id,
-                                  requested_at: "2013-02-16 21:38:28 -0700",
-                                  responded_in: 37,
-                                  referrer_id: 43,
-                                  request_type_id: 2,
-                                  event_id: 54,
-                                  agent_id: 24,
-                                  ip_id: 53243,
-                                  screen_resolution_id: 3,
-                                  client_id: @client1.id
-                                })
-      Payload.create({
-                                  url_id: @url2.id,
-                                  requested_at: "2013-02-16 21:38:28 -0700",
-                                  responded_in: 37,
-                                  referrer_id: 43,
-                                  request_type_id: 2,
-                                  event_id: 54,
-                                  agent_id: 24,
-                                  ip_id: 53243,
-                                  screen_resolution_id: 3,
-                                  client_id: @client1.id
-                                })
+      create_payload({url_id: @url2.id, client_id: @client1.id})
 
         expect(@client1.urls.most_to_least_requested).to eq([@url1.url, @url2.url])
     end
   end
+  
   describe ".min_response" do
     it "returns the minimun response time form a given URL" do
 
-      Payload.create({
-                                  url_id: @url1.id,
-                                  requested_at: "2013-02-16 21:38:28 -0700",
-                                  responded_in: 37,
-                                  referrer_id: 43,
-                                  request_type_id: 1,
-                                  event_id: 54,
-                                  agent_id: 24,
-                                  ip_id: 53243,
-                                  screen_resolution_id: 3,
-                                  client_id: 3
-                                })
-
-      Payload.create({
-                                  url_id: @url1.id,
-                                  requested_at: "2013-02-16 21:38:28 -0700",
-                                  responded_in: 40,
-                                  referrer_id: 43,
-                                  request_type_id: 2,
-                                  event_id: 54,
-                                  agent_id: 24,
-                                  ip_id: 53243,
-                                  screen_resolution_id: 3,
-                                  client_id: 3
-                                })
+      2.times do
+        create_payload({url_id: @url1.id})
+      end
         expect(@url1.min_response).to eq(37)
     end
   end
+
   describe ".max_response" do
     it "returns the maximum response time form a given URL" do
       Payload.create({

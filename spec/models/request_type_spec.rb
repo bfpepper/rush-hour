@@ -8,8 +8,6 @@ RSpec.describe "RequestType" do
 
   describe ".most_frequent" do
     it "returns the most frequent request type" do
-    @request1 = populate_request_table.first
-    @request2 = populate_request_table.last
     Payload.find_or_create_by({
                                 url_id: 1,
                                 requested_at: "2013-02-16 21:38:28 -0700",
@@ -53,8 +51,6 @@ RSpec.describe "RequestType" do
   end
   describe '.all_verbs' do
     it "returns list of all verbs used" do
-      @request1 = populate_request_table.first
-      @request2 = populate_request_table.last
       Payload.find_or_create_by({
                                   url_id: 1,
                                   requested_at: "2013-02-16 21:38:28 -0700",
