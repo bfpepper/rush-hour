@@ -10,4 +10,8 @@ class Client < ActiveRecord::Base
 
   validates :identifier, presence: true
   validates :root_url, presence: true
+
+  def hourly_breakdown(event)
+    payloads.where(event: event.id).group("extract(hour from requested_at)").count
+  end
 end
