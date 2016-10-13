@@ -3,7 +3,9 @@ module RushHour
     not_found do
       erb :error
     end
-    
-    # Write the rest of your controller code here!
+
+    post '/sources' do
+      Client.create(identifier: params[:identifier], root_url: params[:rootUrl])
+    end
   end
 end
