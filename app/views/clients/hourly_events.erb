@@ -1,0 +1,11 @@
+<div class="container" align="center">
+  <h1>Hourly Event Breakdown</h1><br>
+    <table class="table table-striped table-narrow">
+      <% (1..24).to_a.each do |hour|%>
+      <tr id="<%= hour %>">
+        <td><%= hour %>:00</td>
+        <td><%= @hourly[hour.to_f] %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
