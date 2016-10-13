@@ -12,6 +12,7 @@ Capybara.app = RushHour::Server
 
 RSpec.configure do |c|
   c.include Capybara::DSL
+  c.include Rack::Test::Methods
 end
 
 RSpec.configure do |c|
@@ -21,6 +22,10 @@ RSpec.configure do |c|
   c.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+def app
+  RushHour::Server
 end
 
 
@@ -97,7 +102,7 @@ def create_payload(data)
 end
 
 def create_payload_hash(data)
-  {  
+  {
     url_id: 1,
     requested_at: Time.now,
     responded_in: 1,
