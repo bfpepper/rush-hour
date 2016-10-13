@@ -31,6 +31,20 @@ class Payload < ActiveRecord::Base
     minimum("responded_in")
   end
 
+  def self.validate_and_add_payload(params)
+    if params[:payload].nil?
+      [400, "Missing Payload"]
+    elsif Client.find_by(identifier:params["IDENTIFIER"]).nil?
+      [403, "No Client"]
+    elsif
+      already_exists?(params)
+      [403, "Already Received"]
+    else
+        payload_constructor(params)
+      [200, "Payload Created"]
+    end
+  end
+
   def self.payload_constructor(params)
     input = JSON.parse(params[:payload])
 

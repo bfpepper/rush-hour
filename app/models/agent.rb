@@ -8,7 +8,7 @@ class Agent < ActiveRecord::Base
     browsers = all.group(:agent_id).order('count(*) DESC').count.keys
 
     browsers.map do |browser_id|
-      Agent.find(browser_id).browser
+      find(browser_id).browser
     end
   end
 
@@ -16,7 +16,7 @@ class Agent < ActiveRecord::Base
     os = all.group(:agent_id).order('count(*) DESC').count.keys
 
     os.map do |os_id|
-      Agent.find(os_id).os
+      find(os_id).os
     end
   end
 
