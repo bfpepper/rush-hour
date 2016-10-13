@@ -1,36 +1,45 @@
-<h1>Specific URL</h1>
+<div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="https://hd.unsplash.com/photo-1457090673666-0e205962d75c" data-natural-width="1400" data-natural-height="900" style="height: 300px;"></div>
 
-<div class="min">
-  <h2>Minimum Response Time </h2>
-  <p><%= @specific_url.min_response %></p><br>
+<div class="jumbotron" align="center">
+  <h1>URL Breakdown</h1>
+  <h3>For:<%= @specific_url.url %></h3>
 </div>
 
-<div class="max">
-  <h2>Maximum Response Time </h2>
-  <p><%= @specific_url.max_response %></p><br>
-</div>
+<div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="https://hd.unsplash.com/photo-1451756282453-567d7f57ea81" data-natural-width="1400" data-natural-height="900" style="height: 200px;"></div>
 
-<div class="avg">
-  <h2>Average Response Time </h2>
-  <p><%= @specific_url.average_response_time %></p><br>
-</div>
+<div class="jumbotron" align="center">
+  <div class="min">
+    <h3>Minimum Response Time </h3>
+    <p><%= @specific_url.min_response %></p><br>
+  </div>
 
-<div class="order">
-  <h2>Ordered Response Times </h2>
-  <p><%= @specific_url.ordered_response_times %></p><br>
-</div>
+  <div class="max">
+    <h3>Maximum Response Time </h3>
+    <p><%= @specific_url.max_response %></p><br>
+  </div>
 
-<div class="verbs">
-  <h2>All HTTP Verbs </h2>
-  <p><%= @specific_url.verb_list %></p><br>
-</div>
+  <div class="avg">
+    <h3>Average Response Time </h3>
+    <p><%= @specific_url.average_response_time %></p><br>
+  </div>
 
-<div class="referrer">
-  <h2>3 Most Popular Referrers </h2>
-  <p><%= @specific_url.top_referrers%></p><br>
-</div>
+  <div class="order">
+    <h3>Ordered Response Times </h3>
+    <p><%= @specific_url.ordered_response_times %></p><br>
+  </div>
 
-<div class="agent">
-  <h2>3 Most Popular Agents </h2>
-  <p><%= @specific_url.top_agents%></p><br>
+  <div class="verbs">
+    <h3>All HTTP Verbs </h3>
+    <p><%= @specific_url.verb_list %></p><br>
+  </div>
+
+  <div class="referrer">
+    <h3>3 Most Popular Referrers </h3>
+    <p><%= @specific_url.top_referrers%></p><br>
+  </div>
+
+  <div class="agent">
+    <h3>3 Most Popular Agents </h3>
+    <p><%= @specific_url.top_agents%></p><br>
+  </div>
 </div>
