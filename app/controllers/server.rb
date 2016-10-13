@@ -28,7 +28,6 @@ module RushHour
     get '/sources/:IDENTIFIER/urls/:RELATIVEPATH' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
       @specific_url = @client.urls.find_by(url: "#{@client.root_url}/#{params[:RELATIVEPATH]}")
-
       if @specific_url.nil?
         body "Identifier doesn't exist"
         erb :error
@@ -39,7 +38,7 @@ module RushHour
 
     get '/sources/:IDENTIFIER/events/:EVENTNAME' do
       @client = Client.find_by(identifier:params["IDENTIFIER"])
-      @event = Event.find_by(event:params["EVENTNAME"])
+      event = Event.find_by(event:params["EVENTNAME"])
       @hourly = @client.hourly_breakdown(event)
 
       erb :"clients/hourly_events"
