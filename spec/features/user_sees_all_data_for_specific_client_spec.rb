@@ -71,7 +71,7 @@ RSpec.describe "When a user visits '/sources/jumpstartlab/'" do
   it "they can click onto url specific link and it will got them" do
     visit ('/sources/jumpstartlab')
     click_link("http://jumpstartlab.com/blog")
-    expect(page).to have_content("Specific URL")
+    expect(page).to have_content("URL Breakdown")
   end
 
 end
